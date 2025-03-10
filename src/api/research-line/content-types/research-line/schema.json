@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "research_lines",
+  "info": {
+    "singularName": "research-line",
+    "pluralName": "research-lines",
+    "displayName": "Research Line"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "banner": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "gallery": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "about": {
+      "type": "blocks"
+    },
+    "members": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::member.member",
+      "inversedBy": "research_lines"
+    },
+    "videolink": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "publications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::publication.publication",
+      "inversedBy": "research_lines"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "inversedBy": "research_lines"
+    }
+  }
+}

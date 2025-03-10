@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "publications",
+  "info": {
+    "singularName": "publication",
+    "pluralName": "publications",
+    "displayName": "Publication"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "pdflink": {
+      "type": "string"
+    },
+    "paperlink": {
+      "type": "string"
+    },
+    "authors": {
+      "type": "string"
+    },
+    "members": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::member.member",
+      "inversedBy": "publications"
+    },
+    "date": {
+      "type": "date"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "inversedBy": "publications"
+    },
+    "abstract": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "research_lines": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::research-line.research-line",
+      "mappedBy": "publications"
+    }
+  }
+}

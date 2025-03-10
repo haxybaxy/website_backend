@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "banner": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "gallery": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "about": {
+      "type": "blocks"
+    },
+    "members": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::member.member",
+      "inversedBy": "projects"
+    },
+    "videolink": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "publications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::publication.publication",
+      "mappedBy": "projects"
+    },
+    "research_lines": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::research-line.research-line",
+      "mappedBy": "projects"
+    }
+  }
+}

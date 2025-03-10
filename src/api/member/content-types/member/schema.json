@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "members",
+  "info": {
+    "singularName": "member",
+    "pluralName": "members",
+    "displayName": "Member"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastnames": {
+      "type": "string"
+    },
+    "github": {
+      "type": "string"
+    },
+    "linkedin": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "profilepic": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "position": {
+      "type": "string"
+    },
+    "alum": {
+      "type": "boolean"
+    },
+    "website": {
+      "type": "string"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "members"
+    },
+    "publications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::publication.publication",
+      "mappedBy": "members"
+    },
+    "research_lines": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::research-line.research-line",
+      "mappedBy": "members"
+    }
+  }
+}

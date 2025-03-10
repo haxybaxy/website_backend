@@ -369,6 +369,218 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiJobpostJobpost extends Struct.CollectionTypeSchema {
+  collectionName: 'jobposts';
+  info: {
+    displayName: 'Jobpost';
+    pluralName: 'jobposts';
+    singularName: 'jobpost';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contactemail: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.String;
+    description: Schema.Attribute.RichText;
+    instructions: Schema.Attribute.RichText;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::jobpost.jobpost'
+    > &
+      Schema.Attribute.Private;
+    note: Schema.Attribute.String;
+    position: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    requirements: Schema.Attribute.RichText;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMemberMember extends Struct.CollectionTypeSchema {
+  collectionName: 'members';
+  info: {
+    displayName: 'Member';
+    pluralName: 'members';
+    singularName: 'member';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    alum: Schema.Attribute.Boolean;
+    bio: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    firstname: Schema.Attribute.String;
+    github: Schema.Attribute.String;
+    lastnames: Schema.Attribute.String;
+    linkedin: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::member.member'
+    > &
+      Schema.Attribute.Private;
+    position: Schema.Attribute.String;
+    profilepic: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
+    publications: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::publication.publication'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    research_lines: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::research-line.research-line'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website: Schema.Attribute.String;
+  };
+}
+
+export interface ApiProjectProject extends Struct.CollectionTypeSchema {
+  collectionName: 'projects';
+  info: {
+    displayName: 'Project';
+    pluralName: 'projects';
+    singularName: 'project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    about: Schema.Attribute.Blocks;
+    banner: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    gallery: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::project.project'
+    > &
+      Schema.Attribute.Private;
+    members: Schema.Attribute.Relation<'manyToMany', 'api::member.member'>;
+    name: Schema.Attribute.String;
+    publications: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::publication.publication'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    research_lines: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::research-line.research-line'
+    >;
+    tagline: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    videolink: Schema.Attribute.String;
+  };
+}
+
+export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
+  collectionName: 'publications';
+  info: {
+    displayName: 'Publication';
+    pluralName: 'publications';
+    singularName: 'publication';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    abstract: Schema.Attribute.String;
+    authors: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::publication.publication'
+    > &
+      Schema.Attribute.Private;
+    members: Schema.Attribute.Relation<'manyToMany', 'api::member.member'>;
+    name: Schema.Attribute.String;
+    paperlink: Schema.Attribute.String;
+    pdflink: Schema.Attribute.String;
+    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
+    publishedAt: Schema.Attribute.DateTime;
+    research_lines: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::research-line.research-line'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiResearchLineResearchLine
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'research_lines';
+  info: {
+    displayName: 'Research Line';
+    pluralName: 'research-lines';
+    singularName: 'research-line';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    about: Schema.Attribute.Blocks;
+    banner: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    gallery: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::research-line.research-line'
+    > &
+      Schema.Attribute.Private;
+    members: Schema.Attribute.Relation<'manyToMany', 'api::member.member'>;
+    name: Schema.Attribute.String;
+    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
+    publications: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::publication.publication'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    tagline: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    videolink: Schema.Attribute.String;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -878,6 +1090,11 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::jobpost.jobpost': ApiJobpostJobpost;
+      'api::member.member': ApiMemberMember;
+      'api::project.project': ApiProjectProject;
+      'api::publication.publication': ApiPublicationPublication;
+      'api::research-line.research-line': ApiResearchLineResearchLine;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
