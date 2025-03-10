@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_json_rich_texts",
+  "info": {
+    "displayName": "JsonRichText",
+    "icon": "write"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "blocks"
+    }
+  }
+}
