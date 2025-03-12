@@ -4,7 +4,8 @@
   "info": {
     "singularName": "publication",
     "pluralName": "publications",
-    "displayName": "Publication"
+    "displayName": "Publication",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -38,17 +39,18 @@
       "inversedBy": "publications"
     },
     "abstract": {
-      "type": "string"
+      "type": "text"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "research_lines": {
       "type": "relation",

@@ -492,6 +492,7 @@ export interface ApiMemberMember extends Struct.CollectionTypeSchema {
 export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   collectionName: 'projects';
   info: {
+    description: '';
     displayName: 'Project';
     pluralName: 'projects';
     singularName: 'project';
@@ -510,6 +511,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    hidden: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -538,6 +540,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
 export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
   collectionName: 'publications';
   info: {
+    description: '';
     displayName: 'Publication';
     pluralName: 'publications';
     singularName: 'publication';
@@ -546,7 +549,7 @@ export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    abstract: Schema.Attribute.String;
+    abstract: Schema.Attribute.Text;
     authors: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
